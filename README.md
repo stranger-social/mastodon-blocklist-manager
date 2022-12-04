@@ -15,4 +15,4 @@ mbm --help
 
 ## Configuration
 
-mbm uses a configuration file to store your Mastodon instance and credentials. The default location is `~/.config/mbm/config.ini`. You can specify a different location with the `--config` option.
+mbm uses a configuration file to store your Mastodon instance and credentials. Copy the example_settings.py file to settings.py and edit it to your needs.

@@ -4,15 +4,14 @@ A CLI tool to manage your Mastodon blocklist.
 
 ## Installation
 
-'''
+```
 pip install --editable .
-'''
-
+```
 ## Usage
 
-'''
+```
 mbm --help
-'''
+```
 
 ## Configuration
 

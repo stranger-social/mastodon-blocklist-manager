@@ -5,7 +5,9 @@ setup(
     version="1.0",
     packages=["mbm", "mbm.commands"],
     include_package_data=True,
-    install_requires=["click"],
+    install_requires=["click",
+                      "requests",
+                      ],
     entry_points="""
         [console_scripts]
         mbm=mbm.cli:cli

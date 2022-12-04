@@ -4,7 +4,7 @@ A CLI tool to manage your Mastodon blocklist.
 
 ## Installation
 
-Requires Python 3.6 or higher.
+Requires Python 3.8 or higher.
 
 ```
 git clone https://github.com/azcoigreach/mastodon-blocklist-manager.git

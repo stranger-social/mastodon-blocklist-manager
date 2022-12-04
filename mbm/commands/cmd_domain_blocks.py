@@ -25,7 +25,7 @@ def add(ctx, domain_list, severity, public, private, reject_media, reject_report
     domain_list = domain_list.read().splitlines()
     # Upload blocklist
     for line in domain_list:
-        ctx.vlog("Uploading %s" % line)
+        ctx.log("Uploading %s" % line)
         data = {
             "domain": line,
             "severity": severity,
@@ -40,9 +40,9 @@ def add(ctx, domain_list, severity, public, private, reject_media, reject_report
             }
         response = requests.post(ctx.url + "/api/v1/admin/domain_blocks", data=data, headers=headers)
         if response.status_code == 200:
-            ctx.vlog("Upload successful.")
+            ctx.log("Upload successful.")
         else:
-            ctx.vlog("Upload failed.")
+            ctx.log("Upload failed.")
             ctx.vlog("Response: %s" % response.text)
     ctx.log("Done!")
 

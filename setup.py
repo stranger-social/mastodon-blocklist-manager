@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name="mastodon-blocklist-manager",
-    version="1.0",
+    version="0.1.0",
     packages=["mbm", "mbm.commands"],
     include_package_data=True,
     install_requires=["click",

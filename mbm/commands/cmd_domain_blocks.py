@@ -11,7 +11,7 @@ def cli(ctx):
 
 @cli.command("add", short_help="Upload Blocklist entries to the server from a list.")
 @click.argument("domain_list", required=True, type=click.File("r"))
-@click.option("severity", "-s", type=click.Choice(["silence", "suspend", "noop"]), required=True, help="Severity of the entries.")
+@click.option("--severity", "-s", type=click.Choice(["silence", "suspend", "noop"]), required=True, help="Severity of the entries.")
 @click.option("--public", "-pub", required=True, type=str, help="Public Comment")
 @click.option("--private", "-priv", required=True, type=str, help="Private Comment")
 @click.option("--reject_media", "-rm", required=True, type=bool, help="Reject Media")

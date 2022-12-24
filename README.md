@@ -2,6 +2,12 @@
 
 A CLI tool to manage your Mastodon blocklist.
 
+by @azcoigreach@stranger.social
+
+This app is a Python CLI tools to manage your Mastodon Instance blocklist. It can be used to add, remove, and list domains on your blocklist.  It can also be used to generate a blocklist from a list of domains.
+
+There is also a currated list of domains that are known to be problematic.  This list is maintained by @azcoigreach@stranger.social.  If you would like to petition to have your server removed from the stranger.social blocklist, please contact me. A list of rules for the blocklist can be found in the `/blocklist_domains/README.md` file.
+
 ## Installation
 
 Requires Python 3.8 or higher.

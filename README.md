@@ -75,10 +75,6 @@ mbm domain_blocks purge
 
 Will remove all domains from the instance domain_blocks database. Requires confirmation.
 
-## Recommended blocklists
-
-I recommend reading [oliphant's blog](https://writer.oliphant.social/oliphant/new-mastoadmin-ban-list-fediblock) for more information about the blocklists.
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details

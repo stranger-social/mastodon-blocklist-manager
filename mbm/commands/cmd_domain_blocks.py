@@ -131,3 +131,57 @@ def purge(ctx):
                 ctx.log("Delete failed.")
                 ctx.vlog("Response: %s" % response.text)
         ctx.log(f"Done! {count} domains removed.")
+
+@cli.command("list", short_help="List public Blocklist entries on a server.")
+@click.option("-p", "--prefix", required=True, type=str, help="Prefix of filename to write to.")
+@click.option("-s", "--sort", required=False, default=True, type=bool, help="Sort by severity and reason.")
+@pass_environment
+def list(ctx, prefix, sort):
+    """List public Blocklist entries on a server.
+    Assigns a prefix to the filename to write to.
+    Creates files based on severity level and reason.
+    <prefix>-<severity>-<reason>.txt"""
+    ctx.log("Retrieving Domain Blocks.")
+    data = {
+        "limit": 1000
+    }
+    # read json from server and no headers
+    query = requests.get(ctx.url + "/api/v1/instance/domain_blocks", data=data)
+    if query.status_code == 200:
+        ctx.vlog("Query successful.")
+        # Parse json
+        json = query.json()
+        # Extract domain id for each domain in domain_list
+        count = 0
+        skipped = 0
+        for domain in json:
+            if sort == True:
+                ctx.log(domain["domain"] + " " + domain["severity"] + " " + domain["comment"])
+                # if statement to check for asterisk in domain name and skip it
+                if "*" in domain["domain"]:
+                    skipped += 1
+                    ctx.log(domain["domain"] + "[Skipping]")
+                else:
+                    # Create filname based on prefix, severity, and reason (concantenate comment to 10 characters)
+                    filename = ctx.home + "/" + prefix + "-" + domain["severity"] + "-" + domain["comment"][:10] + ".txt"
+                    # Write domain to file
+                    with open(filename, "a") as f:
+                        # Write domain to file with newline
+                        f.write(domain["domain"] + "\n")
+            else:
+                ctx.log(domain["domain"])
+                # if statement to check for asterisk in domain name and skip it
+                if "*" in domain["domain"]:
+                    skipped += 1
+                    ctx.log(domain[domain] + "[Skipping]")
+                else:
+                    # Create filname based on prefix, severity, and reason (concantenate comment to 10 characters)
+                    filename = ctx.home + "/" + prefix + ".txt"
+                    # Write domain to file
+                    with open(filename, "a") as f:
+                        # Write domain to file with newline
+                        f.write(domain["domain"] + "\n")
+            # Increment count                    
+            count += 1
+            added = count - skipped
+        ctx.log(f"Done! {added} domains added. {skipped} domains skipped.")

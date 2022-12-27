@@ -58,8 +58,9 @@ class ManagerCLI(click.MultiCommand):
     help="Mastodon server URL.",
 )
 @click.option("-v", "--verbose", is_flag=True, help="Enables verbose mode.")
+@click.option("--home", type=click.Path(), help="Sets the home working directory.")
 @pass_environment
-def cli(ctx, verbose, token, url):
+def cli(ctx, verbose, token, url, home):
     """Mastodon Blocklist Manager CLI"""
     ctx.verbose = verbose
 
@@ -73,3 +74,7 @@ def cli(ctx, verbose, token, url):
     else:
         ctx.url = settings.SERVER_URL
     
+    if home is not None:
+        ctx.home = home
+    elif settings.HOME is not None:
+        ctx.home = settings.HOME

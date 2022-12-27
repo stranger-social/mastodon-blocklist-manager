@@ -156,14 +156,22 @@ def list(ctx, prefix, sort):
         skipped = 0
         for domain in json:
             if sort == True:
-                ctx.log(domain["domain"] + " " + domain["severity"] + " " + domain["comment"])
+
                 # if statement to check for asterisk in domain name and skip it
                 if "*" in domain["domain"]:
                     skipped += 1
                     ctx.log(domain["domain"] + "[Skipping]")
                 else:
                     # Create filname based on prefix, severity, and reason (concantenate comment to 10 characters)
-                    filename = ctx.home + "/" + prefix + "-" + domain["severity"] + "-" + domain["comment"][:10] + ".txt"
+
+                    # concantenate comment to 10 characters and sanitize filename (no spaces, or invalid characters)
+                    if domain['comment'] == None:
+                        comment_sanitized = str("None")
+                    else:
+                        comment_sanitized = domain["comment"][:10].replace(" ", "_").replace("/", "_")                    
+                    filename = ctx.home + "/" + prefix + "-" + domain["severity"] + "-" + comment_sanitized + ".txt"
+                    ctx.log(domain["domain"] + " " + domain["severity"] + " " + comment_sanitized)
+                    filename = ctx.home + "/" + prefix + "-" + domain["severity"] + "-" + comment_sanitized + ".txt"
                     # Write domain to file
                     with open(filename, "a") as f:
                         # Write domain to file with newline

@@ -14,4 +14,4 @@ Domains will be blocked serverwide if they meet any of the criteria below:
 * NSFW content without a CW
 * Open racism, sexism, homophobia, transphobia, hate speech, threats, bigotry, etc. (including but not limited to: white supremacy, nazism, fascism, etc.) - go fuck off to your own server.
 * Any other content that is illegal in the United States of America.
-* Any other content the Administrators deem to be harmful to the community.  Because we have 1st Amendment rights, we can block whatever we want.
+* Any other content the Administrators deem to be harmful to the community.

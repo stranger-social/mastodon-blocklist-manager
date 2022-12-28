@@ -1,2 +1,0 @@
-activitypub-proxy.cf
-activitypub-troll.cf

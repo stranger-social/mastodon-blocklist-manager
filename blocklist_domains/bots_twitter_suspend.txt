@@ -39,6 +39,7 @@ d-fens.systems
 firebird.mullet.social
 gameliberty.club
 gameliberty.clubbeta.birdsite.live
+mastinator.com
 mastodonhub.com
 newsbots.eu
 twitiverse.com
